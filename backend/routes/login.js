@@ -8,6 +8,7 @@ const router=express.Router();
 router.post('/login',async (req,res)=>{
     
     const {email}=req.body;
+
     //if nothing is eneterd
     if(!email){
         res.status(400).json({
@@ -16,6 +17,16 @@ router.post('/login',async (req,res)=>{
         });
         return
     }
+    //extra field
+    if(Object.keys(req.body).length>2){
+        res.status(400).json({
+            success:false,
+            message:"Only email is required"
+        });
+        return
+    }
+    //validating email type
+    //const emailRegex=ff;
     //main logic
     try{
         //check if email exist
@@ -41,6 +52,7 @@ router.post('/login',async (req,res)=>{
             user_id:userId,
             email,
             token,
+            
             message
         });
         
