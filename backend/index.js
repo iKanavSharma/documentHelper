@@ -3,6 +3,7 @@ const express=require("express");
 const db=require("./database/db");
 const authRoutes=require("./routes/login");
 const statRoutes=require("./routes/stats");
+const versionRoutes=require("./routes/appsettings");
 const notificationRoutes=require("./routes/notification");
 const documentRoutes=require("./routes/document");
 const cors=require("cors");
@@ -26,6 +27,9 @@ app.use("/api/admin",statRoutes);
 
 //uploafd api
 app.use('/uploads', express.static('uploads'));
+
+//update apis
+app.use("/api",versionRoutes);
 
 //notifications api
 app.use("/api/admin/notifications",notificationRoutes);
