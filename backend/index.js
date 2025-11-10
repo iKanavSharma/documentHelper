@@ -3,7 +3,8 @@ const express=require("express");
 const db=require("./database/db");
 const authRoutes=require("./routes/login");
 const statRoutes=require("./routes/stats");
-const documentRoutes=require("./routes/document")
+const notificationRoutes=require("./routes/notification");
+const documentRoutes=require("./routes/document");
 const cors=require("cors");
 
 
@@ -26,6 +27,8 @@ app.use("/api/admin",statRoutes);
 //uploafd api
 app.use('/uploads', express.static('uploads'));
 
+//notifications api
+app.use("/api/admin/notifications",notificationRoutes);
 //documnet send
 app.use("/api/document",documentRoutes);
 //document received
